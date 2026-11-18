@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Kamu, Cintaku 💕</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+    background-size: 400% 400%;
+    animation: gradientMove 16s ease infinite;
+  }
+  @keyframes gradientMove {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* ===== Hati yang beterbangan di background ===== */
+  .bg-hearts span {
+    position: fixed;
+    bottom: -60px;
+    z-index: 1;
+    pointer-events: none;
+    user-select: none;
+    animation: naik linear infinite;
+  }
+  @keyframes naik {
+    0%   { transform: translateY(0) rotate(0deg);    opacity: 0; }
+    10%  { opacity: .85; }
+    100% { transform: translateY(-115vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* ===== Kartu utama ===== */
+  .card {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 540px;
+    padding: 38px 26px 30px;
+    text-align: center;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, .78);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, .7);
+    box-shadow: 0 22px 55px rgba(180, 60, 120, .28);
+    animation: muncul 1.1s cubic-bezier(.2, .9, .3, 1.2);
+  }
+  @keyframes muncul {
+    from { opacity: 0; transform: translateY(40px) scale(.94); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .big-heart {
+    display: inline-block;
+    font-size: 62px;
+    line-height: 1;
+    filter: drop-shadow(0 8px 14px rgba(255, 80, 140, .45));
+    animation: beat 1.3s ease-in-out infinite;
+  }
+  @keyframes beat {
+    0%, 100% { transform: scale(1); }
+    25%      { transform: scale(1.16); }
+    45%      { transform: scale(.94); }
+    65%      { transform: scale(1.09); }
+  }
+
+  h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2rem, 7vw, 2.6rem);
+    color: #d6336c;
+    margin: 12px 0 4px;
+    line-height: 1.15;
+  }
+
+  .sub {
+    font-size: .85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #b06a8c;
+    font-weight: 300;
+  }
+
+  /* ===== Efek ketik ===== */
+  .type-box {
+    margin: 20px 0 4px;
+    min-height: 92px;
+    font-size: .95rem;
+    line-height: 1.75;
+    color: #6b2d5c;
+    font-weight: 400;
+  }
+  .cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    margin-left: 2px;
+    background: #d6336c;
+    vertical-align: -2px;
+    animation: kedip .7s steps(1) infinite;
+  }
+  @keyframes kedip { 50% { opacity: 0; } }
+
+  /* ===== Chip jumlah hari ===== */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 18px 0 6px;
+    padding: 9px 20px;
+    border-radius: 50px;
+    font-size: .82rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #ff6b9d, #c44569);
+    box-shadow: 0 8px 18px rgba(196, 69, 105, .35);
+  }
+
+  /* ===== Tombol ===== */
+  .btn-row { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+
+  .btn {
+    border: none;
+    cursor: pointer;
+    padding: 14px 26px;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: .9rem;
+    color: #fff;
+    background: linear-gradient(135deg, #ff6b9d, #c44569);
+    box-shadow: 0 10px 22px rgba(196, 69, 105, .42);
+    transition: transform .22s ease, box-shadow .22s ease;
+  }
+  .btn:hover  { transform: translateY(-3px) scale(1.05); box-shadow: 0 14px 28px rgba(196, 69, 105, .55); }
+  .btn:active { transform: scale(.97); }
+
+  .btn.alt {
+    background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+    color: #6b2d5c;
+    box-shadow: 0 10px 22px rgba(161, 140, 209, .42);
+  }
+  .btn.alt:hover { box-shadow: 0 14px 28px rgba(161, 140, 209, .55); }
+
+  /* ===== Kotak pesan rahasia ===== */
+  #pesan {
+    margin-top: 20px;
+    min-height: 74px;
+    padding: 18px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    font-size: .92rem;
+    line-height: 1.6;
+    color: #8a2b52;
+    background: rgba(255, 255, 255, .7);
+    border: 1.5px dashed rgba(214, 51, 108, .45);
+    transition: opacity .3s ease, transform .3s ease;
+  }
+  #pesan.fade { opacity: 0; transform: translateY(8px); }
+
+  .footer {
+    margin-top: 24px;
+    font-size: .72rem;
+    letter-spacing: 1px;
+    color: #b06a8c;
+    font-weight: 300;
+  }
+
+  /* ===== Hati saat layar diklik ===== */
+  .pop-heart {
+    position: fixed;
+    z-index: 999;
+    font-size: 26px;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    animation: popUp 1.2s ease-out forwards;
+  }
+  @keyframes popUp {
+    0%   { transform: translate(-50%, -50%) scale(.4);  opacity: 1; }
+    100% { transform: translate(-50%, -220%) scale(1.7); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-hearts" id="bgHearts"></div>
+
+<div class="card">
+  <div class="big-heart">💖</div>
+  <h1 id="judul">Hai, Sayang</h1>
+  <p class="sub">Ada sesuatu buat kamu</p>
+
+  <div class="type-box">
+    <span id="typewriter"></span><span class="cursor"></span>
+  </div>
+
+  <div class="chip">💞 Kita udah bareng <span id="hari">0</span> hari</div>
+
+  <div class="btn-row">
+    <button class="btn" id="btnPesan">Baca Pesan Rahasia 💌</button>
+    <button class="btn alt" id="btnPeluk">Peluk Virtual 🤗</button>
+  </div>
+
+  <div id="pesan">Tekan tombolnya ya, sayang… aku udah siapin banyak pesan buat kamu 🥺</div>
+
+  <p class="footer">Dibuat dengan ❤️ cuma buat kamu</p>
+</div>
+
+<script>
+
+// Panggilan buat dia
+const PANGGILAN = "Sayang";
+
+// Tanggal jadian (format: TAHUN-BULAN-HARI)
+const TANGGAL_JADIAN = "2023-04-14";
+
+// Kalimat yang diketik (boleh diganti sesukamu)
+const KALIMAT = `Hai ${PANGGILAN}... aku nggak jago ngomong,
+jadi aku bikin ini buat kamu.
+Makasih ya udah jadi kamu,
+udah sabar, udah nemenin aku.
+Aku sayang kamu, hari ini, besok, dan selamanya. 💕`;
+
+// Kumpulan pesan rahasia
+const PESAN_RAHASIA = [
+  "Aku sayang kamu, hari ini, besok, dan seterusnya. 💕",
+  "Kamu itu alasan aku senyum sendiri kayak orang gila. 😊",
+  "Kalau rindu bisa dikirim, udah aku kirim sejuta kali. 📮",
+  "Jangan lupa makan ya, sayang. Jangan sampai sakit. 🍜",
+  "Aku bangga punya kamu. Serius, bangga banget. 🥰",
+  "Semoga hari kamu secerah senyum kamu. ☀️",
+  "Kalau dunia lagi berat, sandar aja ke aku. 🤍",
+  "Kamu itu rumah, bukan cuma tempat singgah. 🏡",
+  "Tidur yang cukup ya, jangan begadang terus. 😴",
+  "Aku nggak butuh yang sempurna, aku cuma butuh kamu. 💗"
+];
+
+/* ============================================================
+   ⛔  Di bawah ini jangan diubah kalau nggak perlu
+   ============================================================ */
+
+// --- Judul ---
+document.getElementById("judul").textContent = "Hai, " + PANGGILAN;
+
+// --- Hitung hari bareng ---
+const mulai = new Date(TANGGAL_JADIAN + "T00:00:00");
+const selisihHari = Math.floor((new Date() - mulai) / 86400000);
+document.getElementById("hari").textContent = selisihHari > 0 ? selisihHari : 0;
+
+// --- Efek ketik ---
+const elType = document.getElementById("typewriter");
+let i = 0;
+function ketik() {
+  if (i < KALIMAT.length) {
+    elType.textContent += KALIMAT.charAt(i);
+    i++;
+    setTimeout(ketik, 42);
+  }
+}
+setTimeout(ketik, 900);
+
+// --- Hati di background ---
+const bg = document.getElementById("bgHearts");
+const emojiList = ["💖", "💕", "❤️", "💘", "💗", "🌸", "💞"];
+for (let n = 0; n < 22; n++) {
+  const s = document.createElement("span");
+  s.textContent = emojiList[Math.floor(Math.random() * emojiList.length)];
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.fontSize = 14 + Math.random() * 26 + "px";
+  s.style.animationDuration = 9 + Math.random() * 11 + "s";
+  s.style.animationDelay = Math.random() * 12 + "s";
+  bg.appendChild(s);
+}
+
+// --- Hati muncul saat layar diklik ---
+document.addEventListener("click", function (e) {
+  const h = document.createElement("div");
+  h.className = "pop-heart";
+  h.textContent = emojiList[Math.floor(Math.random() * emojiList.length)];
+  h.style.left = e.clientX + "px";
+  h.style.top = e.clientY + "px";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 1200);
+});
+
+// --- Tombol pesan rahasia ---
+const kotakPesan = document.getElementById("pesan");
+let pesanTerakhir = -1;
+
+document.getElementById("btnPesan").addEventListener("click", function (e) {
+  e.stopPropagation();
+  let idx;
+  do {
+    idx = Math.floor(Math.random() * PESAN_RAHASIA.length);
+  } while (idx === pesanTerakhir && PESAN_RAHASIA.length > 1);
+  pesanTerakhir = idx;
+
+  kotakPesan.classList.add("fade");
+  setTimeout(() => {
+    kotakPesan.textContent = PESAN_RAHASIA[idx];
+    kotakPesan.classList.remove("fade");
+  }, 280);
+});
+
+// --- Tombol peluk virtual (hujan hati) ---
+document.getElementById("btnPeluk").addEventListener("click", function (e) {
+  e.stopPropagation();
+
+  kotakPesan.classList.add("fade");
+  setTimeout(() => {
+    kotakPesan.textContent = "🤗 Pelukan terkirim! Anggap aja aku lagi peluk kamu sekarang. Jangan dilepas ya… 💞";
+    kotakPesan.classList.remove("fade");
+  }, 280);
+
+  for (let n = 0; n < 26; n++) {
+    setTimeout(() => {
+      const h = document.createElement("div");
+      h.className = "pop-heart";
+      h.textContent = emojiList[Math.floor(Math.random() * emojiList.length)];
+      h.style.left = Math.random() * window.innerWidth + "px";
+      h.style.top = window.innerHeight * (0.55 + Math.random() * 0.45) + "px";
+      h.style.fontSize = 18 + Math.random() * 22 + "px";
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 1200);
+    }, n * 55);
+  }
+});
+</script>
+</body>
+  </html>
